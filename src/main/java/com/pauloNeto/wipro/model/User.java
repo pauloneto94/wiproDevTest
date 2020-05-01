@@ -3,6 +3,7 @@ package com.pauloNeto.wipro.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 import java.util.Set;
 
@@ -14,8 +15,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
+    @NotEmpty
     private String login;
 
+    @NotEmpty
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")

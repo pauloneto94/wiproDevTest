@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
 @Data
@@ -15,11 +16,19 @@ import java.util.Date;
 public class Product {
 
     @Id
+    @NotEmpty
     private String code;
 
+    @NotEmpty
     private String description;
+
+    @NotEmpty
     private ProductActivation productActivation;
+
+    @NotEmpty
     private int price;
+
+    @NotEmpty
     private Date date;
 
     @ManyToOne
