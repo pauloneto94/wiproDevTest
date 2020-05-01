@@ -21,6 +21,8 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<Product> productList;
 
+    public User(){}
+
     public User(String login, String password){
         this.login = login;
         this.password = password;

@@ -1,6 +1,7 @@
 package com.pauloNeto.wipro.service;
 
 import com.pauloNeto.wipro.model.Product;
+import com.pauloNeto.wipro.model.ProductActivation;
 import com.pauloNeto.wipro.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class ProductService {
         List<Product> products = productRepository.findAll();
         return products
                 .stream()
-                .filter(product -> "active".equals(product.getDescription()))
+                .filter(product -> ProductActivation.ACTIVE.equals(product.getProductActivation()))
                 .collect(Collectors.toList());
     }
 
@@ -30,7 +31,7 @@ public class ProductService {
         List<Product> products = productRepository.findAll();
         return products
                 .stream()
-                .filter(product -> "inactive".equals(product.getDescription()))
+                .filter(product -> ProductActivation.INACTIVE.equals(product.getProductActivation()))
                 .collect(Collectors.toList());
     }
 
@@ -49,7 +50,7 @@ public class ProductService {
 
     public Product editActivation(String code){
         Product product = productRepository.getOne(code);
-        product.setDescription("inactive");
+        product.setProductActivation(ProductActivation.INACTIVE);
         return editProduct(code, product);
     }
 }
