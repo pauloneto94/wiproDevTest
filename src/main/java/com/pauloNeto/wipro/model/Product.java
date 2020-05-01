@@ -2,6 +2,7 @@ package com.pauloNeto.wipro.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
@@ -16,19 +18,19 @@ import java.util.Date;
 public class Product {
 
     @Id
-    @NotEmpty
+    @EqualsAndHashCode.Exclude
     private String code;
 
     @NotEmpty
     private String description;
 
-    @NotEmpty
+    @NotNull
     private ProductActivation productActivation;
 
-    @NotEmpty
+    @NotNull
     private int price;
 
-    @NotEmpty
+    @NotNull
     private Date date;
 
     @ManyToOne
