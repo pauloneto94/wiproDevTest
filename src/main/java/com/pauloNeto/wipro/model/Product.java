@@ -33,4 +33,12 @@ public class Product {
         this.date = date;
         this.user = user;
     }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }
