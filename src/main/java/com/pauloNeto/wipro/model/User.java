@@ -1,9 +1,13 @@
 package com.pauloNeto.wipro.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
+@Data
+@Entity
 public class User {
 
     @Id
