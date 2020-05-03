@@ -7,6 +7,7 @@ import { NewProductComponent } from './new-product/new-product.component';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { InactiveProductsComponent } from './inactive-products/inactive-products.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { InactiveProductsComponent } from './inactive-products/inactive-products
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

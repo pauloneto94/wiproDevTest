@@ -1,6 +1,6 @@
 <div class="container">
-    <h1>Produto</h1>
-    <form #productForm="ngForm" (ngSubmit)="onSubmit()">
+    <h1>Novo Produto</h1>
+    <form #productForm="ngForm" (ngSubmit)="onSubmit(); productForm.reset()">
       <div class="form-group">
         <label for="description">Descrição</label>
         <input type="text" class="form-control" id="description"
@@ -15,7 +15,7 @@
         [(ngModel)]="product.price" name="price">
       </div>
   
-      <button type="submit" class="btn btn-success" [disabled]="!benefitsForm.form.valid">Salvar alterações</button>
+      <button type="submit" class="btn btn-success" [disabled]="!productForm.form.valid">Salvar alterações</button>
     </form>
 </div>
   
