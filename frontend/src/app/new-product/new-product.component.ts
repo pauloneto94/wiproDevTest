@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../service/product.service';
+import { Product } from '../model/products';
 
 @Component({
   selector: 'app-new-product',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewProductComponent implements OnInit {
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
+
+  product: Product;
 
   ngOnInit(): void {
+    this.product = {code: "", description: "", productActivation: null, price: 0, date: null};
+  }
+
+  onSubmit(){
+    this.productService.addProduct(this.product);
   }
 
 }

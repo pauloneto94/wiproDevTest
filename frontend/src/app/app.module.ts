@@ -6,13 +6,15 @@ import { ProductsComponent } from './products/products.component';
 import { NewProductComponent } from './new-product/new-product.component';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
+import { InactiveProductsComponent } from './inactive-products/inactive-products.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
     NewProductComponent,
-    LoginComponent
+    LoginComponent,
+    InactiveProductsComponent
   ],
   imports: [
     BrowserModule,

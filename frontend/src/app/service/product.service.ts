@@ -12,7 +12,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getActiveProducts(){
-    return this.http.get<Product[]>('http://localhost:8080/activateProducts');
+    return this.http.get<Product[]>(this.serverUrl+'/activateProducts');
   }
 
   getInactiveProducts(){
