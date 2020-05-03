@@ -14,8 +14,19 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public boolean validateUser(User user){
-        return userRepository.findAll().contains(user);
+    public User currentUser = null;
+
+    public User logIn(User user){
+        if(userRepository.findAll().contains(user)){
+            currentUser = user;
+            return user;
+        }else return null;
+    }
+
+    public void logOff(User user){
+        if(currentUser != null){
+            currentUser = null;
+        }
     }
 
     public User createUser(User user){ return userRepository.save(user); }
@@ -28,6 +39,10 @@ public class UserService {
 
         if(usersName.contains(login)) return true;
         else return false;
+    }
+
+    public List<User> getUsers(){
+        return userRepository.findAll();
     }
 
 }
