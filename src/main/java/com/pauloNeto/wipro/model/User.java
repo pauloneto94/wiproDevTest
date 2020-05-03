@@ -1,10 +1,10 @@
 package com.pauloNeto.wipro.model;
 
 import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import java.util.List;
 import java.util.Set;
 
 @Data
@@ -16,6 +16,7 @@ public class User {
     private String id;
 
     @NotEmpty
+    @Getter
     private String login;
 
     @NotEmpty
@@ -31,4 +32,7 @@ public class User {
         this.password = password;
     }
 
+    public String getLogin() {
+        return login;
+    }
 }

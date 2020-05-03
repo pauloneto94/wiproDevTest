@@ -14,12 +14,13 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/validate")
-    public boolean validateUser(User user){
-        return userService.validateUser(user);
+    public ResponseEntity<Boolean> validateUser(User user){
+        return new ResponseEntity<Boolean>(userService.validateUser(user), HttpStatus.OK);
     }
 
     @PostMapping("/user")
-    public User newUser(@RequestBody User user){
-        return userService.createUser(user);
+    public ResponseEntity<User> newUser(@RequestBody User user){
+        if(userService.loginExist(user.getLogin())) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        return new ResponseEntity<User>(userService.createUser(user), HttpStatus.OK);
     }
 }
