@@ -1,0 +1,14 @@
+  <div class="container">
+    <h2>Pesquisar produtos</h2>
+    <div class="search-product">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off">
+        <button type="button" (click)="getProduct()">Procurar</button> 
+    </div>
+    <ul class="products">
+      <li *ngFor="let product of products">
+        <a routerLink="/product/{{product.code}}">
+          {{product.description}}
+        </a>
+      </li>
+    </ul>
+    </div>
