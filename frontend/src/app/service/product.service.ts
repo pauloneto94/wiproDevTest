@@ -20,11 +20,15 @@ export class ProductService {
   }
 
   getProduct(code: string){
-    return this.http.get<Product>(this.serverUrl+'/products/${code}');
+    return this.http.get<Product>(this.serverUrl+'/products/'+code);
   }
 
   addProduct(product: Product){
-    return this.http.post<Product>(this.serverUrl+'/products', product);
+    return this.http.post<Product>(this.serverUrl+'/products', product).subscribe();
+  }
+
+  updateProduct(product: Product){
+    return this.http.patch(this.serverUrl+'/products/'+product.code, product).subscribe();
   }
 
 }

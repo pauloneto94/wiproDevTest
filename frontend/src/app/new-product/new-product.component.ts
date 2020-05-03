@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../service/product.service';
 import { Product } from '../model/products';
 import { ProductActivation } from '../model/productAtivation';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-new-product',
@@ -25,5 +23,7 @@ export class NewProductComponent implements OnInit {
     this.product.date = new Date();
     this.productService.addProduct(this.product);
   }
+
+  get diagnostic() { return JSON.stringify(this.product); }
 
 }

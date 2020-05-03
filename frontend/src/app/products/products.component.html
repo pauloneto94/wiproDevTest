@@ -2,7 +2,7 @@
     <h2>Produtos Ativos</h2>
     <ul class="products">
       <li *ngFor="let product of products">
-        <a routerLink="/products/{{product.code}}">
+        <a routerLink="/product/{{product.code}}">
           {{product.description}}
         </a>
       </li>

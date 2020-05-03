@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -44,8 +45,8 @@ public class ProductService {
         productRepository.deleteById(code);
     }
 
-    public Product getProductByCode(String code){
-        return productRepository.getOne(code);
+    public Optional<Product> getProductByCode(String code){
+        return productRepository.findById(code);
     }
 
     public Product editActivation(String code){
