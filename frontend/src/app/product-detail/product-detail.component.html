@@ -23,6 +23,7 @@
       </div>
   
       <button type="submit" class="btn btn-success" [disabled]="!productForm.form.valid">Salvar alterações</button>
+      <button type="button" class="btn btn-success" (click)="inativate()" routerLink="/products">Inativar Produto</button> 
     </form>
 
     <button (click)="goBack()">Voltar</button>  

@@ -33,6 +33,10 @@ export class ProductDetailComponent implements OnInit {
     this.productService.updateProduct(this.product);
   }
 
+  inativate(){
+    this.productService.inativateProduct(this.product.code);
+  }
+
   goBack(): void {
     this.location.back();
   }

@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { InactiveProductsComponent } from './inactive-products/inactive-products.component';
 import { FormsModule } from '@angular/forms';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     NewProductComponent,
     LoginComponent,
     InactiveProductsComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,

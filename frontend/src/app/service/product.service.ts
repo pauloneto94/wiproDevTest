@@ -28,7 +28,11 @@ export class ProductService {
   }
 
   updateProduct(product: Product){
-    return this.http.patch(this.serverUrl+'/products/'+product.code, product).subscribe();
+    return this.http.patch<Product>(this.serverUrl+'/products/'+product.code, product).subscribe();
+  }
+
+  inativateProduct(code: string) {
+    return this.http.patch<Product>(this.serverUrl+'/'+code+'/inactivate', code).subscribe();
   }
 
 }
