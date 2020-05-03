@@ -21,38 +21,32 @@ public class ProductController {
 
     @GetMapping("/activateProducts")
     public ResponseEntity<List<Product>> getActivateProducts(){
-        if(userService.currentUser == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        else return ResponseEntity.status(HttpStatus.OK).body(productService.getActivatedProducts());
+        return ResponseEntity.status(HttpStatus.OK).body(productService.getActivatedProducts());
     }
 
     @GetMapping("/inactivateProducts")
     public ResponseEntity<List<Product>> getInactivateProducts(){
-        if(userService.currentUser == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        else return ResponseEntity.status(HttpStatus.OK).body(productService.getInactivatedProducts());
+        return ResponseEntity.status(HttpStatus.OK).body(productService.getInactivatedProducts());
     }
 
     @PostMapping("/products")
     public ResponseEntity<Product> addProduct(@RequestBody  Product product){
-        if(userService.currentUser == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        else return ResponseEntity.status(HttpStatus.OK).body(productService.newProduct(product));
+        return ResponseEntity.status(HttpStatus.OK).body(productService.newProduct(product));
     }
 
     @RequestMapping(value = "/products/{code}", method = RequestMethod.PATCH)
     public ResponseEntity<Product> editProduct(@PathVariable String code, @RequestBody Product product){
-        if(userService.currentUser == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        else return ResponseEntity.status(HttpStatus.OK).body(productService.editProduct(code, product));
+        return ResponseEntity.status(HttpStatus.OK).body(productService.editProduct(code, product));
     }
 
     @GetMapping("products/{code}")
     public ResponseEntity<Product> getProduct(@PathVariable String code){
-        if(userService.currentUser == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        else return ResponseEntity.status(HttpStatus.OK).body(productService.getProductByCode(code));
+        return ResponseEntity.status(HttpStatus.OK).body(productService.getProductByCode(code));
     }
 
-    @RequestMapping(value = "/inactivate/{code}", method = RequestMethod.PATCH)
+    @RequestMapping(value = "products/{code}/inactivate", method = RequestMethod.PATCH)
     public ResponseEntity<Product> inactivateProduct(@PathVariable String code){
-        if(userService.currentUser == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        else return ResponseEntity.status(HttpStatus.OK).body(productService.editActivation(code));
+        return ResponseEntity.status(HttpStatus.OK).body(productService.editActivation(code));
     }
 
 }

@@ -2,13 +2,16 @@ package com.pauloNeto.wipro.model;
 
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import java.util.Set;
 
 @Data
 @Entity
+@Getter @Setter
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -16,23 +19,9 @@ public class User {
     private String id;
 
     @NotEmpty
-    @Getter
     private String login;
 
     @NotEmpty
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private Set<Product> productList;
-
-    public User(){}
-
-    public User(String login, String password){
-        this.login = login;
-        this.password = password;
-    }
-
-    public String getLogin() {
-        return login;
-    }
 }
