@@ -17,15 +17,9 @@ public class UserService {
     public User currentUser = null;
 
     public User logIn(User user){
-        if(userRepository.findAll().contains(user)){
-            currentUser = user;
+        if(!loginExist(user.getLogin())) return null;
+        else{
             return user;
-        }else return null;
-    }
-
-    public void logOff(User user){
-        if(currentUser != null){
-            currentUser = null;
         }
     }
 

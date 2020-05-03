@@ -17,8 +17,7 @@ public class UserController {
 
     @PostMapping("/logIn")
     public ResponseEntity<User> validateUser(@RequestBody User user){
-        if(!userService.loginExist(user.getLogin())) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        else return ResponseEntity.status(HttpStatus.OK).body(userService.logIn(user));
+        return ResponseEntity.status(HttpStatus.OK).body(userService.logIn(user));
     }
 
     @PostMapping("/user")
