@@ -54,4 +54,16 @@ public class ProductService {
         product.setProductActivation(ProductActivation.INACTIVE);
         return editProduct(code, product);
     }
+
+    public Boolean codeExist(String code){
+        return productRepository.findAll()
+                .stream()
+                .map(p -> p.getCode())
+                .collect(Collectors.toList())
+                .contains(code);
+    }
+
+    public Boolean isInvalid(String code){
+        return productRepository.getOne(code).getProductActivation() == ProductActivation.INACTIVE;
+    }
 }

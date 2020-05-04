@@ -35,7 +35,8 @@ public class ProductController {
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/products")
     public ResponseEntity<Product> addProduct(@RequestBody  Product product){
-        return ResponseEntity.status(HttpStatus.OK).body(productService.newProduct(product));
+        if(productService.codeExist(product.getCode())) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        else return ResponseEntity.status(HttpStatus.OK).body(productService.newProduct(product));
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
@@ -53,7 +54,8 @@ public class ProductController {
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/inactivate/{code}")
     public ResponseEntity<Product> inactivateProduct(@PathVariable String code){
-        return ResponseEntity.status(HttpStatus.OK).body(productService.editActivation(code));
+        if(productService.isInvalid(code)) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        else return ResponseEntity.status(HttpStatus.OK).body(productService.editActivation(code));
     }
 
 }

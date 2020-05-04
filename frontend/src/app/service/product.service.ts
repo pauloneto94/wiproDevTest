@@ -24,7 +24,12 @@ export class ProductService {
   }
 
   addProduct(product: Product){
-    return this.http.post<Product>(this.serverUrl+'/products', product).subscribe();
+    return this.http.post<Product>(this.serverUrl+'/products', product).subscribe(respose =>{
+      console.log(respose);
+    }, err =>{
+      console.log(err);
+      alert("Produto ja cadastrado!");
+    });
   }
 
   updateProduct(product: Product){
@@ -32,7 +37,12 @@ export class ProductService {
   }
 
   inativateProduct(code: string) {
-    return this.http.get<Product>(this.serverUrl+'/inactivate/'+code).subscribe();
+    return this.http.get<Product>(this.serverUrl+'/inactivate/'+code, {observe: 'response'}).subscribe(respose =>{
+      console.log(respose);
+    }, err =>{
+      console.log(err);
+      alert("Produto ja inválido!");
+    });
   }
 
 }
