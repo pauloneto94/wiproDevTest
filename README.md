@@ -15,6 +15,7 @@ CRUD Rest Api implemented using spring-boot Maven Project.
 - Create a user to login in frontend
 
 
+
     POST localhost:8080/user/
     Accept: application/json
     Content-Type: application/json
