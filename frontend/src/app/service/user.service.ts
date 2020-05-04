@@ -14,6 +14,7 @@ export class UserService {
   serverUrl = 'http://localhost:8080';
 
   isLoggedIn: boolean;
+  redirectUrl: string;
 
   logIn(login: string, password: string, router: Router): string{
     this.http.get<User>(this.serverUrl+'/user/'+login).subscribe(u =>{
