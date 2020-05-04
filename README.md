@@ -11,6 +11,17 @@ CRUD Rest Api implemented using spring-boot Maven Project.
  - Run the service by using the following command:
 
     `./mvnw spring-boot:run`
+    
+- Create a user to login in frontend
+
+
+    POST localhost:8080/user/
+    Accept: application/json
+    Content-Type: application/json
+	{
+	"login": "login",
+	"password": "password"				
+	}    
 
 ### Frontend
 -   Download the zip or clone the Git repository.
@@ -20,3 +31,5 @@ CRUD Rest Api implemented using spring-boot Maven Project.
 
     `ng serve`
 -   Navigate to `http://localhost:4200/`
+
+- Use the login and password created to use the application.
