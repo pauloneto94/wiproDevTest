@@ -10,6 +10,7 @@ import { InactiveProductsComponent } from './inactive-products/inactive-products
 import { FormsModule } from '@angular/forms';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { AuthGuard } from './auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

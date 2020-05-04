@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../model/user';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,13 +9,18 @@ import { User } from '../model/user';
 export class UserService {
 
   constructor(private http: HttpClient) { 
-
   }
 
-  serverUrl = 'http://localhost:4200';
+  serverUrl = 'http://localhost:8080';
 
-  logIn(user: User){
-    return this.http.post<User>(this.serverUrl+'logIn', user).subscribe();
+  isLoggedIn: boolean;
+
+  logIn(login: string, password: string){
+    return this.http.get<User>(this.serverUrl+'/user/'+login).subscribe(u =>{
+      if(u.login == login && u.password == password){
+        this.isLoggedIn = true;
+      }else this.isLoggedIn = false;
+    });
   }
 
 }
