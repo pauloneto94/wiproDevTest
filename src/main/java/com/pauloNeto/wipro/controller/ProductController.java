@@ -51,7 +51,7 @@ public class ProductController {
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
-    @RequestMapping(value = "products/{code}/inactivate", method = RequestMethod.PATCH)
+    @GetMapping("/inactivate/{code}")
     public ResponseEntity<Product> inactivateProduct(@PathVariable String code){
         return ResponseEntity.status(HttpStatus.OK).body(productService.editActivation(code));
     }

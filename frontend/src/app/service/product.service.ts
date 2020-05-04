@@ -32,7 +32,7 @@ export class ProductService {
   }
 
   inativateProduct(code: string) {
-    return this.http.patch<Product>(this.serverUrl+'/'+code+'/inactivate', code).subscribe();
+    return this.http.get<Product>(this.serverUrl+'/inactivate/'+code).subscribe();
   }
 
 }
