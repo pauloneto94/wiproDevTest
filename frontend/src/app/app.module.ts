@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { AuthGuard } from './auth/auth.guard';
+import { StorageServiceModule } from 'ngx-webstorage-service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AuthGuard } from './auth/auth.guard';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    StorageServiceModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
