@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../model/user';
-import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +15,17 @@ export class UserService {
 
   isLoggedIn: boolean;
 
-  logIn(login: string, password: string){
-    return this.http.get<User>(this.serverUrl+'/user/'+login).subscribe(u =>{
+  logIn(login: string, password: string, router: Router): string{
+    this.http.get<User>(this.serverUrl+'/user/'+login).subscribe(u =>{
       if(u.login == login && u.password == password){
         this.isLoggedIn = true;
-      }else this.isLoggedIn = false;
+        router.navigate(['/products']);
+      }else{
+        this.isLoggedIn = false;
+      }
     });
+    if(this.isLoggedIn) return "";
+    else return "Login ou Senha inválido!";
   }
 
 }

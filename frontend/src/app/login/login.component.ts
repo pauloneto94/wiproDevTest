@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
 
   email: string;
   password: string;
+  message: string;
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -18,11 +19,6 @@ export class LoginComponent implements OnInit {
   }
 
   logIn(){
-    this.userService.logIn(this.email, this.password);
-    if(this.userService.isLoggedIn){
-      this.router.navigate(['/products']);
-    }else{ 
-      
-    }
+    this.message = this.userService.logIn(this.email, this.password, this.router);
   }
 }
