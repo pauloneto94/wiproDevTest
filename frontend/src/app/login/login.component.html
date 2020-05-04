@@ -1,1 +1,13 @@
-<p>login works!</p>
+<div class="container">
+    <h1>Login</h1>
+    <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="text" class="form-control" [(ngModel)]="email" placeholder="email">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" [(ngModel)]="password" id="pwd" placeholder="password">
+    </div>
+    <button (click)="logIn()" class="btn btn-default" style="margin-left:5px;">Login</button>
+    {{message}}
+</div>

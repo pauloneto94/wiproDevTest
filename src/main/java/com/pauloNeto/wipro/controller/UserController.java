@@ -16,12 +16,6 @@ public class UserController {
     UserService userService;
 
     @CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping("/logIn")
-    public ResponseEntity<User> validateUser(@RequestBody User user){
-        return ResponseEntity.status(HttpStatus.OK).body(userService.logIn(user));
-    }
-
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/user")
     public ResponseEntity<User> newUser(@RequestBody User user){
         if(userService.loginExist(user.getLogin())) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
@@ -32,5 +26,12 @@ public class UserController {
     @GetMapping("/users")
     public ResponseEntity<List<User>> getUsers(){
         return ResponseEntity.status(HttpStatus.OK).body(userService.getUsers());
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/user/{login}")
+    public ResponseEntity<User> getUser(@PathVariable String login){
+        if(!userService.loginExist(login)) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        else return ResponseEntity.status(HttpStatus.OK).body(userService.findByLogin(login));
     }
 }
